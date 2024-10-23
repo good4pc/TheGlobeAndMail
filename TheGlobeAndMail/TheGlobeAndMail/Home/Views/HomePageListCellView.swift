@@ -8,9 +8,9 @@
 import SwiftUI
 
 
-struct ListCellView: View {
-    @StateObject private var viewModel: ListCellViewModel
-    init(viewModel: ListCellViewModel) {
+struct HomePageListCellView: View {
+    @StateObject private var viewModel: HomePageListCellViewModel
+    init(viewModel: HomePageListCellViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
 

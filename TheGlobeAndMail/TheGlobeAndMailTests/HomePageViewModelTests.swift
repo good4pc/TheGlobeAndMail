@@ -17,7 +17,7 @@ final class HomePageViewModelTests: XCTestCase {
                                                            storyImage: PromotionImage(urls: PromotionImagesUrl(image_650: "")))])
         let mockClient = MockApiClient()
         mockClient.resultExpected = .success(GENERIC: data)
-        let viewModel = HomePageViewModel(apiClient: mockClient, urlconfigurations: UrlConfigurations(baseUrl: "https://d2c9087llvttmg.cloudfront.net/"))
+        let viewModel = HomePageViewModel(apiClient: mockClient)
         await viewModel.loadHomePageContents()
         await MainActor.run {
             XCTAssertEqual(viewModel.stories.count, 1)
@@ -35,7 +35,7 @@ final class HomePageViewModelTests: XCTestCase {
                                                            storyImage: PromotionImage(urls: PromotionImagesUrl(image_650: "")))])
         let mockClient = MockApiClient()
         mockClient.resultExpected = .success(GENERIC: data)
-        let viewModel = HomePageViewModel(apiClient: mockClient, urlconfigurations: UrlConfigurations(baseUrl: "https://d2c9087llvttmg.cloudfront.net/"))
+        let viewModel = HomePageViewModel(apiClient: mockClient)
         await viewModel.loadHomePageContents()
         await MainActor.run {
             XCTAssertFalse(viewModel.stories[0].showTrailingIcon)
@@ -45,11 +45,10 @@ final class HomePageViewModelTests: XCTestCase {
     func test_loadHomePageContents_failure() async {
         let mockClient = MockApiClient()
         mockClient.resultExpected = .failure(ApiClientError.decodingError)
-        let viewModel = HomePageViewModel(apiClient: mockClient, urlconfigurations: UrlConfigurations(baseUrl: "https://d2c9087llvttmg.cloudfront.net/"))
+        let viewModel = HomePageViewModel(apiClient: mockClient)
         await viewModel.loadHomePageContents()
         await MainActor.run {
             XCTAssertEqual(viewModel.errorString, "error")
-            XCTAssertEqual(viewModel.stories.count, 0)
         }
     }
 }

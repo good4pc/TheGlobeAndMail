@@ -21,7 +21,7 @@ struct HomePageView: View {
                     .tint(.black)
             } else {
                 List(viewModel.stories, id: \.content_id) { story in
-                    ListCellView(viewModel: .init(story: story))
+                    HomePageListCellView(viewModel: .init(story: story))
                 }
                 .listStyle(.plain)
                 .navigationTitle("The globe and mail")

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class ListCellViewModel: ObservableObject {
+final class HomePageListCellViewModel: ObservableObject {
     private let cache = NSCache<NSString, UIImage>()
     private(set) var story: Story
     @Published var storyImage = UIImage()
