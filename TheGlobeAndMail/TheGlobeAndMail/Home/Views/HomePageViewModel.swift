@@ -22,7 +22,7 @@ final class HomePageViewModel: ObservableObject {
 
     func loadHomePageContents() async {
         showActivityIndicator(true)
-        self.setError(nil)
+        setError(nil)
         do {
             let request = try urlConfigurations.getUrlRequest(endPoint: .homePageListing)
             let result: Result<Recommendations, Error> = await apiClient.loadData(urlRequest: request)
@@ -35,7 +35,6 @@ final class HomePageViewModel: ObservableObject {
                     self.setError("error")
                 }
             }
-            
         } catch {
             DispatchQueue.main.async {
                 self.showActivityIndicator(false)

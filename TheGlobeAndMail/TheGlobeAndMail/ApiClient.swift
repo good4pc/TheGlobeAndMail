@@ -29,7 +29,7 @@ final class ApiClient: ApiClientProviding {
             guard let _ = urlResponse as? HTTPURLResponse else {
                 return .failure(ApiClientError.errorFetchingData)
             }
-            //process anything based on status
+            //process code based on status
             let decoder = JSONDecoder()
             do {
                 let decodedData = try decoder.decode(T.self, from: data)

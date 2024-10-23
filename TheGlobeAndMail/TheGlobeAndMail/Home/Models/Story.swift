@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct Recommendations: Decodable {
     let recommendations: [Story]
 }
