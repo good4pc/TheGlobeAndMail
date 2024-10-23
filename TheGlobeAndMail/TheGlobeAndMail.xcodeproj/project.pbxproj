@@ -14,6 +14,9 @@
 		8DF7EC4F2CC9502B006B18CF /* TheGlobeAndMailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7EC4E2CC9502B006B18CF /* TheGlobeAndMailTests.swift */; };
 		8DF7EC592CC9502B006B18CF /* TheGlobeAndMailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7EC582CC9502B006B18CF /* TheGlobeAndMailUITests.swift */; };
 		8DF7EC5B2CC9502B006B18CF /* TheGlobeAndMailUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7EC5A2CC9502B006B18CF /* TheGlobeAndMailUITestsLaunchTests.swift */; };
+		8DF7EC692CC95081006B18CF /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7EC682CC95081006B18CF /* HomePageView.swift */; };
+		8DF7EC6B2CC950AF006B18CF /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7EC6A2CC950AF006B18CF /* HomePageViewModel.swift */; };
+		8DF7EC6E2CC9510E006B18CF /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7EC6D2CC9510E006B18CF /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		8DF7EC542CC9502B006B18CF /* TheGlobeAndMailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheGlobeAndMailUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF7EC582CC9502B006B18CF /* TheGlobeAndMailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheGlobeAndMailUITests.swift; sourceTree = "<group>"; };
 		8DF7EC5A2CC9502B006B18CF /* TheGlobeAndMailUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheGlobeAndMailUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8DF7EC682CC95081006B18CF /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		8DF7EC6A2CC950AF006B18CF /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		8DF7EC6D2CC9510E006B18CF /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,8 @@
 		8DF7EC3C2CC95026006B18CF /* TheGlobeAndMail */ = {
 			isa = PBXGroup;
 			children = (
+				8DF7EC6D2CC9510E006B18CF /* ApiClient.swift */,
+				8DF7EC672CC95068006B18CF /* Home */,
 				8DF7EC3D2CC95026006B18CF /* TheGlobeAndMailApp.swift */,
 				8DF7EC3F2CC95026006B18CF /* ContentView.swift */,
 				8DF7EC412CC9502A006B18CF /* Assets.xcassets */,
@@ -125,6 +133,15 @@
 				8DF7EC5A2CC9502B006B18CF /* TheGlobeAndMailUITestsLaunchTests.swift */,
 			);
 			path = TheGlobeAndMailUITests;
+			sourceTree = "<group>";
+		};
+		8DF7EC672CC95068006B18CF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8DF7EC682CC95081006B18CF /* HomePageView.swift */,
+				8DF7EC6A2CC950AF006B18CF /* HomePageViewModel.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DF7EC6B2CC950AF006B18CF /* HomePageViewModel.swift in Sources */,
 				8DF7EC402CC95026006B18CF /* ContentView.swift in Sources */,
+				8DF7EC692CC95081006B18CF /* HomePageView.swift in Sources */,
 				8DF7EC3E2CC95026006B18CF /* TheGlobeAndMailApp.swift in Sources */,
+				8DF7EC6E2CC9510E006B18CF /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
