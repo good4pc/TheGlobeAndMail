@@ -11,13 +11,13 @@ protocol ApiClientProviding: AnyObject {
     func loadData<T: Decodable>(urlRequest: URLRequest) async -> Result<T, Error>
 }
 
-final class ApiClient: ApiClientProviding {
-    enum ApiClientError: Error {
-        case errorFetchingData
-        case noResponseStatus
-        case decodingError
-    }
+enum ApiClientError: Error {
+    case errorFetchingData
+    case noResponseStatus
+    case decodingError
+}
 
+final class ApiClient: ApiClientProviding {
     private let urlSession: URLSession
     init(urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession

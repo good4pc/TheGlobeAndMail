@@ -25,7 +25,7 @@ class UrlConfigurations {
 
     private let baseUrl: String
 
-    init(baseUrl: String) {
+    init(baseUrl: String = "") {
         self.baseUrl = baseUrl
     }
 
@@ -34,7 +34,8 @@ class UrlConfigurations {
         guard let url = URL(string: urlString) else {
             throw UrlConfigurationsError.urlIncorrect
         }
-        let urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url)
+        urlRequest.timeoutInterval = 10.0
         return urlRequest
     }
 }

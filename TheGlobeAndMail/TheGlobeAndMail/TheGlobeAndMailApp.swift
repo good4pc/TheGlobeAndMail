@@ -11,7 +11,13 @@ import SwiftUI
 struct TheGlobeAndMailApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let viewModel = HomePageViewModel()
+            HomePageView(viewModel: viewModel)
+                .onAppear(perform: {
+                    Task {
+                        await viewModel.loadHomePageContents()
+                    }
+                })
         }
     }
 }
