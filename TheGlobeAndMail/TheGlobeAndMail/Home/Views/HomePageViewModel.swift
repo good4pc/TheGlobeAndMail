@@ -9,21 +9,18 @@ import Foundation
 
 final class HomePageViewModel: ObservableObject {
     private let apiClient: ApiClientProviding
-    private let urlConfigurations: UrlConfigurations
     @Published var isLoading = false
     @Published var stories: [Story] = []
     @Published var errorString: String?
 
-    init(apiClient: ApiClientProviding = ApiClient(),
-         urlconfigurations: UrlConfigurations = UrlConfigurations(baseUrl: BaseUrlFactory.url)) {
+    init(apiClient: ApiClientProviding = ApiClient()) {
         self.apiClient = apiClient
-        self.urlConfigurations = urlconfigurations
     }
 
     func loadHomePageContents() async {
         showActivityIndicator(true)
         do {
-            let request = try urlConfigurations.getUrlRequest(endPoint: .homePageListing)
+            let request = try UrlConfigurations(baseUrl: BaseUrlFactory.url).getUrlRequest(endPoint: .homePageListing)
             let result: Result<Recommendations, Error> = await apiClient.loadData(urlRequest: request)
             DispatchQueue.main.async {
                 self.showActivityIndicator(false)
