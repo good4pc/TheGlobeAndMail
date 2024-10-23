@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomePageView: View {
-    private let viewModel: HomePageViewModel
+    @StateObject private var viewModel: HomePageViewModel
     init(viewModel: HomePageViewModel) {
-        self.viewModel = viewModel
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
 
     var body: some View {

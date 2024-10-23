@@ -7,7 +7,11 @@
 
 import Foundation
 
-class ApiClient {
+protocol ApiClientProviding: AnyObject {
+    func loadData<T: Decodable>(urlRequest: URLRequest) async -> Result<T, Error>
+}
+
+final class ApiClient: ApiClientProviding {
     enum ApiClientError: Error {
         case errorFetchingData
         case noResponseStatus
@@ -22,7 +26,7 @@ class ApiClient {
     func loadData<T: Decodable>(urlRequest: URLRequest) async -> Result<T, Error> {
         do {
             let (data,urlResponse) = try await urlSession.data(for: urlRequest)
-            guard let responseStatus = urlResponse as? HTTPURLResponse else {
+            guard let _ = urlResponse as? HTTPURLResponse else {
                 return .failure(ApiClientError.errorFetchingData)
             }
             //process anything based on status
@@ -33,7 +37,7 @@ class ApiClient {
             } catch {
                 return .failure(ApiClientError.decodingError)
             }
-        } catch let error {
+        } catch {
             return .failure(ApiClientError.errorFetchingData)
         }
     }
