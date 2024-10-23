@@ -20,8 +20,8 @@ struct HomePageView: View {
                     .progressViewStyle(.circular)
                     .tint(.black)
             } else {
-                List(viewModel.stories, id: \.self) { story in
-                    ListCellView(viewModel: .init(story: story))
+                List(viewModel.stories, id: \.content_id) { story in
+                    HomePageListCellView(viewModel: .init(story: story))
                 }
                 .listStyle(.plain)
                 .navigationTitle("The globe and mail")
