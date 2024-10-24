@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DA92B972CC9DB9E00B15044 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA92B962CC9DB9E00B15044 /* ImageCache.swift */; };
 		8DF7EC3E2CC95026006B18CF /* TheGlobeAndMailApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF7EC3D2CC95026006B18CF /* TheGlobeAndMailApp.swift */; };
 		8DF7EC422CC9502A006B18CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7EC412CC9502A006B18CF /* Assets.xcassets */; };
 		8DF7EC452CC9502A006B18CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF7EC442CC9502A006B18CF /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8DA92B962CC9DB9E00B15044 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		8DF7EC3A2CC95026006B18CF /* TheGlobeAndMail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheGlobeAndMail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF7EC3D2CC95026006B18CF /* TheGlobeAndMailApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheGlobeAndMailApp.swift; sourceTree = "<group>"; };
 		8DF7EC412CC9502A006B18CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				8DF7EC732CC97443006B18CF /* TitleAndIcon.swift */,
 				8DF7EC792CC97E5C006B18CF /* HomePageListCellView.swift */,
 				8DF7EC7B2CC983EA006B18CF /* HomePageListCellViewModel.swift */,
+				8DA92B962CC9DB9E00B15044 /* ImageCache.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA92B972CC9DB9E00B15044 /* ImageCache.swift in Sources */,
 				8DF7EC702CC9552E006B18CF /* UrlConfigurations.swift in Sources */,
 				8DF7EC6B2CC950AF006B18CF /* HomePageViewModel.swift in Sources */,
 				8DF7EC742CC97443006B18CF /* TitleAndIcon.swift in Sources */,

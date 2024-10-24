@@ -51,6 +51,45 @@ final class HomePageViewModelTests: XCTestCase {
             XCTAssertEqual(viewModel.errorString, "error")
         }
     }
+
+    func test_authorDecodingTest() throws {
+        let json = """
+        {
+        "recommendations": [
+           {
+            "content_id": "",
+            "title": "",
+            "protection_product": "",
+            "byline": ["PC", "PC2"],
+            "promo_image": {"urls": {"650": ""}}
+           }
+        ]
+    }
+"""
+        let data = Data(json.utf8)
+        let decoder = JSONDecoder()
+        let decodedData = try decoder.decode(Recommendations.self, from: data)
+        let story = try XCTUnwrap(decodedData.recommendations.first)
+        XCTAssertEqual(story.author.displayValue, "PC and PC2")
+
+        let json2 = """
+        {
+        "recommendations": [
+           {
+            "content_id": "",
+            "title": "",
+            "protection_product": "",
+            "byline": ["PC"],
+            "promo_image": {"urls": {"650": ""}}
+           }
+        ]
+    }
+"""
+        let data2 = Data(json2.utf8)
+        let decodedData2 = try decoder.decode(Recommendations.self, from: data2)
+        let story2 = try XCTUnwrap(decodedData2.recommendations.first)
+        XCTAssertEqual(story2.author.displayValue, "PC")
+    }
 }
 
 enum ResultExpectation {

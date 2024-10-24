@@ -8,7 +8,6 @@
 import SwiftUI
 
 final class HomePageListCellViewModel: ObservableObject {
-    private let cache = NSCache<NSString, UIImage>()
     private(set) var story: Story
     @Published var storyImage = UIImage()
     init(story: Story) {
@@ -17,7 +16,7 @@ final class HomePageListCellViewModel: ObservableObject {
     }
 
     private func downloadImage() {
-        if let existingImage = cache.object(forKey: NSString(string: story.storyImage.urls.image_650)) {
+        if let existingImage = ImageCache.getImage(key: story.storyImage.urls.image_650) {
             self.storyImage = existingImage
         }  else {
             Task {
@@ -30,7 +29,7 @@ final class HomePageListCellViewModel: ObservableObject {
         let image = await ImageDownloader.downloadImage(url: story.storyImage.urls.image_650)
         DispatchQueue.main.async {
             if let image {
-                self.cache.setObject(image, forKey: NSString(string: self.story.storyImage.urls.image_650))
+                ImageCache.saveImage(image: image, key: self.story.storyImage.urls.image_650)
                 self.storyImage = image
             }
         }
