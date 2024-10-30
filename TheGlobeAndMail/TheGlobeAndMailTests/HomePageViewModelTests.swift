@@ -89,6 +89,24 @@ final class HomePageViewModelTests: XCTestCase {
         let decodedData2 = try decoder.decode(Recommendations.self, from: data2)
         let story2 = try XCTUnwrap(decodedData2.recommendations.first)
         XCTAssertEqual(story2.author.displayValue, "PC")
+
+        let json3 = """
+        {
+        "recommendations": [
+           {
+            "content_id": "",
+            "title": "",
+            "protection_product": "",
+            "byline": "PC",
+            "promo_image": {"urls": {"650": ""}}
+           }
+        ]
+    }
+"""
+        let data3 = Data(json2.utf8)
+        let decodedData3 = try decoder.decode(Recommendations.self, from: data3)
+        let story3 = try XCTUnwrap(decodedData2.recommendations.first)
+        XCTAssertEqual(story3.author.displayValue, "PC")
     }
 }
 

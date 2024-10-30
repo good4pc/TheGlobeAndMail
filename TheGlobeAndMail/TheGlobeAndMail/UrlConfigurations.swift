@@ -25,7 +25,7 @@ class UrlConfigurations {
 
     private let baseUrl: String
 
-    init(baseUrl: String = "") {
+    init(baseUrl: String = BaseUrlFactory.url) {
         self.baseUrl = baseUrl
     }
 

@@ -18,7 +18,7 @@ enum ApiClientError: Error {
 }
 
 final class ApiClient: ApiClientProviding {
-    private let urlSession: URLSession
+    private var urlSession: URLSession
     init(urlSession: URLSession = URLSession.shared) {
         self.urlSession = urlSession
     }
@@ -26,10 +26,11 @@ final class ApiClient: ApiClientProviding {
     func loadData<T: Decodable>(urlRequest: URLRequest) async -> Result<T, Error> {
         do {
             let (data,urlResponse) = try await urlSession.data(for: urlRequest)
-            guard let _ = urlResponse as? HTTPURLResponse else {
+            guard let response = urlResponse as? HTTPURLResponse,
+                  response.statusCode == 200 else {
                 return .failure(ApiClientError.errorFetchingData)
             }
-            //process code based on status
+
             let decoder = JSONDecoder()
             do {
                 let decodedData = try decoder.decode(T.self, from: data)
@@ -39,6 +40,16 @@ final class ApiClient: ApiClientProviding {
             }
         } catch {
             return .failure(ApiClientError.errorFetchingData)
+        }
+    }
+
+    private func configureUrlSession() {
+        if ProcessInfo.processInfo.environment["UITESTING"] == "1" {
+            let config = URLSessionConfiguration.ephemeral
+            config.protocolClasses = [MockUrlProtocol.self]
+            urlSession = URLSession(configuration: config)
+        } else {
+            urlSession = URLSession.shared
         }
     }
 }

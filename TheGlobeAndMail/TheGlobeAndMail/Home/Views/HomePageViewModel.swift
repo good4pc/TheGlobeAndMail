@@ -20,7 +20,7 @@ final class HomePageViewModel: ObservableObject {
     func loadHomePageContents() async {
         showActivityIndicator(true)
         do {
-            let request = try UrlConfigurations(baseUrl: BaseUrlFactory.url).getUrlRequest(endPoint: .homePageListing)
+            let request = try UrlConfigurations().getUrlRequest(endPoint: .homePageListing)
             let result: Result<Recommendations, Error> = await apiClient.loadData(urlRequest: request)
             DispatchQueue.main.async {
                 self.showActivityIndicator(false)
@@ -29,13 +29,13 @@ final class HomePageViewModel: ObservableObject {
                     self.stories = model.recommendations
                     self.errorString = nil
                 case .failure:
-                    self.errorString = "error"
+                    self.errorString = String(localized: "error_message")
                 }
             }
         } catch {
             DispatchQueue.main.async {
                 self.showActivityIndicator(false)
-                self.errorString = "error"
+                self.errorString = String(localized: "error_message")
             }
         }
     }

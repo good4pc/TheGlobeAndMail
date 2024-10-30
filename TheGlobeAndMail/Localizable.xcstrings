@@ -1,0 +1,26 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    " " : {
+
+    },
+    "error_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error Occurred, please try again."
+          }
+        }
+      }
+    },
+    "The globe and mail" : {
+
+    },
+    "X" : {
+
+    }
+  },
+  "version" : "1.0"
+}

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import TheGlobeAndMail
 
 final class TheGlobeAndMailUITests: XCTestCase {
 
@@ -25,17 +26,16 @@ final class TheGlobeAndMailUITests: XCTestCase {
     func testExample() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
+        app.launchEnvironment["UITESTING"] = "1"
         app.launch()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
+        MockUrlProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: request.url!,
+                                           statusCode: 200,
+                                           httpVersion: nil,
+                                           headerFields: nil)!
+            let data = "{ \"key\": \"value\" }".data(using: .utf8)!
+            return (response, data)
         }
     }
 }
